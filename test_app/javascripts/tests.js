@@ -32,19 +32,38 @@ test('sets css width to be specific', function() {
 	});
 });
 
+waitTime = 250;
 
-asyncTest('sets position of each element correctly', function() {
+asyncTest('sets position of first element centered around (x,y) = (12,10)', function() {
   deepEqual($children.filter(':nth-child(1)').get(), $children.first().get(), 'selecting the first div');
+	setTimeout(function() {
+		equal($children.filter(':nth-child(1)').css('left'), '11px', 'first element has left at 11');
+		equal($children.filter(':nth-child(1)').css('top'), '9px', 'first element has top at 9');
+		start();
+	}, waitTime);
+});
+
+asyncTest('sets position of first element centered around (x,y) = (10,8)', function() {
+	setTimeout(function() {
+		equal($children.filter(':nth-child(2)').css('left'), '9px', 'second element has left at 9');
+		equal($children.filter(':nth-child(2)').css('top'), '8px', 'second element has top at 10');
+		start();
+	}, waitTime);
+});
+
+asyncTest('sets position of first element centered around (x,y) = (8,10)', function() {
+	setTimeout(function() {
+		equal($children.filter(':nth-child(3)').css('left'), '8px', 'third element has left at 8');
+		equal($children.filter(':nth-child(3)').css('top'), '9px', 'third element has top at 9');
+		start();
+	}, waitTime);
+});
+
+asyncTest('sets position of first element centered around (x,y) = (10,12)', function() {
 	deepEqual($children.filter(':nth-child(4)').get(), $children.last().get(), 'selecting the last div');
 	setTimeout(function() {
-		equal($children.filter(':nth-child(1)').css('left'), '9px', 'first element is centered around (x,y) = (11,10) with left at 10');
-		equal($children.filter(':nth-child(1)').css('top'), '11px', 'first element is centered around (x,y) = (11,10) with top at 11');
-		equal($children.filter(':nth-child(2)').css('left'), '9px', 'second element is centered around (x,y) = (10,11) with left at 9');
-		equal($children.filter(':nth-child(2)').css('top'), '10px', 'second element is centered around (x,y) = (10,11) with top at 10');
-		equal($children.filter(':nth-child(3)').css('left'), '8px', 'third element is centered around (x,y) = (9,10) with left at 8');
-		equal($children.filter(':nth-child(3)').css('top'), '9px', 'third element is centered around (x,y) = (9,10) with top at 9');
-		equal($children.filter(':nth-child(4)').css('left'), '9px', 'fourth element is centered around (x,y) = (10,9) with left at 9');
-		equal($children.filter(':nth-child(4)').css('top'), '8px', 'fourth element is centered around (x,y) = (10,9) with top at 8');
+		equal($children.filter(':nth-child(4)').css('left'), '9px', 'fourth element has left at 9');
+		equal($children.filter(':nth-child(4)').css('top'), '8px', 'fourth element has top at 8');
 		start();
-	}, 25);
+	}, waitTime);
 });

@@ -7,21 +7,21 @@
 </head>
 <body>
 	<a id='list_wheelie' href='#'>Do a wheelie!</a>
-	<ol id='list'>
-		<li>a</li>
-		<li>b</li>
-		<li>c</li>
-		<li>d</li>
-		<li>e</li>
-		<li>f</li>
-		<li>g</li>
-		<li>h</li>
-		<li>i</li>
-		<li>j</li>
-		<li>k</li>
-		<li>l</li>
-		
-	</ol>
+	<div id='list'>
+		<div>a</div>
+		<div>b</div>
+		<div>c</div>
+		<div>d</div>
+		<div>e</div>
+		<div>f</div>
+		<div>g</div>
+		<div>h</div>
+		<div>i</div>
+		<div>j</div>
+		<div>k</div>
+		<div>l</div>
+		<div>m</div>
+	</div>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
 	<script src="javascripts/jquery-1.9.1.min.js"></script>
@@ -31,7 +31,7 @@
 
 	<script>
 		$('a#list_wheelie').click(function(){
-			$('#list li').wheelie(100, 100, 50);
+			$('#list div').wheelie(250, 250, 250);
 		});
 	</script>
 </body>
