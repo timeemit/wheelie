@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Demo</title>
+    <title>Wheelie!</title>
+	  <link rel="stylesheet" href="stylesheets/qunit-1.11.0.css">
 </head>
 <body>
 	<a id='list_wheelie' href='#'>Do a wheelie!</a>
-	<ol>
+	<ol id='list'>
 		<li>a</li>
 		<li>b</li>
 		<li>c</li>
@@ -21,13 +22,18 @@
 		<li>l</li>
 		
 	</ol>
-	<script src="jquery-1.9.1.min.js"></script>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+	<script src="javascripts/jquery-1.9.1.min.js"></script>
 	<script src='../lib/wheelie.js'></script>
+  <script src="javascripts/qunit-1.11.0.js"></script>
+  <script src="javascripts/tests.js"></script>
+
 	<script>
 		$('a#list_wheelie').click(function(){
 			w = document.width;
 			h = document.height;
-			$('li').wheelie(w/2,h/2, h/4);
+			$('#list li').wheelie(w/2,h/2, h/4);
 		});
 	</script>
 </body>
