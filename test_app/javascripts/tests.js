@@ -55,7 +55,7 @@ module('wheelie without options set', {
 		$children = $('#qunit-fixture div')
 		$children.css('height', '2px');
 		$children.css('width', '2px');		
-		$children.wheelie({center_x: 10, center_y: 10, radius: 2});
+		$wheeled = $children.wheelie({center_x: 10, center_y: 10, radius: 2});
 	}
 });
 
@@ -65,8 +65,9 @@ test('has four div elements', function() {
 });
 
 test('wheelie returns jQuery object', function() { 
-	deepEqual($children.wheelie({center_x: 10, center_y:10, radius: 2}).get(), $children.get(), 'seem to be equal')
+	deepEqual($wheeled.get(), $children.get(), 'seem to be equal')
 });
+
 test('sets css position to be absolute', function() {
 	$children.each(function(){
 		equal($(this).css('position'), 'absolute');

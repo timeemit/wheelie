@@ -7,12 +7,13 @@
 </head>
 <body>
 	<a id='list_wheelie' href='#'>Do a wheelie!</a>
+	<a id='just_a_thru_e' href='#'>Now change it up!</a>
 	<div id='list' style='width:500px; height:500px;'>
-		<div>a</div>
-		<div>b</div>
-		<div>c</div>
-		<div>d</div>
-		<div>e</div>
+		<div class='subset'>a</div>
+		<div class='subset'>b</div>
+		<div class='subset'>c</div>
+		<div class='subset'>d</div>
+		<div class='subset'>e</div>
 		<div>f</div>
 		<div>g</div>
 		<div>h</div>
@@ -30,8 +31,14 @@
 
 	<script>
 		$('a#list_wheelie').click(function(){
-			$('#list div').wheelie({radius:150, center_x:250, center_y:250}, {invert_y_axis: true});
+			$('#list div').wheelie({radius:150, center_x:250, center_y:250}, 
+				{radians_to_rotate_by: - Math.PI / 2});
 		});
+		$('a#just_a_thru_e').click(function(){
+			$('#list div.subset').wheelie({radius:75, center_x:250, center_y:250}, 
+				{radians_to_rotate_by: - Math.PI / 2});
+		});
+		
 	</script>
 </body>
 </html>
