@@ -1,3 +1,6 @@
+four_divs = '<div>A</div><div>B</div><div>C</div><div>D</div>'
+waitTime = 300;
+
 test( "hello test", function() {
   ok( 1 == "1", "Passed!" );
 });
@@ -61,6 +64,9 @@ test('has four div elements', function() {
 	equal($fixture.children('div').size(), 4, 'four div elemements are in the fixture');
 });
 
+test('wheelie returns jQuery object', function() { 
+	deepEqual($children.wheelie({center_x: 10, center_y:10, radius: 2}).get(), $children.get(), 'seem to be equal')
+});
 test('sets css position to be absolute', function() {
 	$children.each(function(){
 		equal($(this).css('position'), 'absolute');
@@ -75,8 +81,6 @@ test('sets css width to be specific', function() {
 		equal($(this).css('height'), '2px');
 	});
 });
-
-waitTime = 300;
 
 asyncTest('sets position of first element centered around (x,y) = (12,10)', function() {
   deepEqual($children.filter(':nth-child(1)').get(), $children.first().get(), 'selecting the first div');
@@ -93,6 +97,7 @@ asyncTest('sets position of second element centered around (x,y) = (10,12)', fun
 		equal($children.filter(':nth-child(2)').css('top'), '11px', 'fourth element has top at 11');
 		start();
 	}, waitTime);
+});
 
 asyncTest('sets position of third element centered around (x,y) = (8,10)', function() {
 	setTimeout(function() {
@@ -111,4 +116,69 @@ asyncTest('sets position of fourth element centered around (x,y) = (10,8)', func
 	}, waitTime);
 });
 
+module('wheelie with invert_y_axis set to true', {
+	setup: function() {
+		$( "#qunit-fixture" ).append(four_divs);
+		$children = $('#qunit-fixture div').wheelie(
+			{center_x: 10, center_y: 10, radius: 2}, {invert_y_axis: true}
+		);
+	}
+});
+
+test('still returns angles correctly', function() {
+	var angleFromIndex = $children.data('thinkLiamThink.wheelie').angleFromIndex
+		
+	equal(angleFromIndex(0), 0, 'Angle of 1 is zero radians');
+	equal(angleFromIndex(1), Math.PI / 2, 'Angle of 2 is half a radian');
+	equal(angleFromIndex(2), Math.PI, 'Angle of 3 is a radian');
+	equal(angleFromIndex(3), 3 * Math.PI / 2, 'Angle of 3 is accurate');
+	equal(angleFromIndex(4), 2 * Math.PI, 'Angle of 4 is 2*PI ');
+});
+
+test('inverts radii with', function() {
+	var unitRadiusOfIndex = $children.data('thinkLiamThink.wheelie').unitRadiusOfIndex
+		
+	ok(Math.abs(unitRadiusOfIndex(0, 'sin')) < 0.000000000001, 'Sin of 0 radians is 0');
+	equal(unitRadiusOfIndex(1, 'sin'), -1, 'Sin of half of a radian is -1');
+	ok(Math.abs(unitRadiusOfIndex(2, 'sin')) < 0.000000000001, 'Sin of a radian is 0');
+	equal(unitRadiusOfIndex(3, 'sin'), 1, 'Sin of 1.5 radians is 1');
+	ok(Math.abs(unitRadiusOfIndex(4, 'sin')) < 0.000000000001, 'Sin of 2 radians is 0');
+});
+
+module('wheelie with radians_to_rotate_by set to pi / 4', {
+	setup: function() {
+		$( "#qunit-fixture" ).append(four_divs);
+		$children = $('#qunit-fixture div').wheelie(
+			{center_x: 10, center_y: 10, radius: 2}, {radians_to_rotate_by: Math.PI / 4}
+		);
+	}
+});
+
+test('angleFromIndex accounts for the extra radians', function() {
+	var angleFromIndex = $children.data('thinkLiamThink.wheelie').angleFromIndex
+		
+	equal(angleFromIndex(0), Math.PI / 4, 'Angle of 1 is zero radians');
+	equal(angleFromIndex(1), 3 * Math.PI / 4, 'Angle of 2 is half a radian');
+	equal(angleFromIndex(2), 5 * Math.PI / 4, 'Angle of 3 is a radian');
+	equal(angleFromIndex(3), 7 * Math.PI / 4, 'Angle of 3 is accurate');
+	equal(angleFromIndex(4), 9 * Math.PI / 4, 'Angle of 4 is 2*PI ');
+});
+
+module('wheelie with reverse_rotation set to true', {
+	setup: function() {
+		$( "#qunit-fixture" ).append(four_divs);
+		$children = $('#qunit-fixture div').wheelie(
+			{center_x: 10, center_y: 10, radius: 2}, {reverse_rotation: true}
+		);
+	}
+});
+
+test('still returns angles correctly', function() {
+	var angleFromIndex = $children.data('thinkLiamThink.wheelie').angleFromIndex
+		
+	equal(angleFromIndex(0), 0, 'Angle of 1 is zero radians');
+	equal(angleFromIndex(1), - Math.PI / 2, 'Angle of 2 is half a radian');
+	equal(angleFromIndex(2), - Math.PI, 'Angle of 3 is a radian');
+	equal(angleFromIndex(3), - 3 * Math.PI / 2, 'Angle of 3 is accurate');
+	equal(angleFromIndex(4), - 2 * Math.PI, 'Angle of 4 is 2*PI ');
 });
