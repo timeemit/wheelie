@@ -20,7 +20,6 @@
 		<div>j</div>
 		<div>k</div>
 		<div>l</div>
-		<div>m</div>
 	</div>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
@@ -31,7 +30,7 @@
 
 	<script>
 		$('a#list_wheelie').click(function(){
-			$('#list div').wheelie(250, 250, 250);
+			$('#list div').wheelie({radius:150, center_x:250, center_y:250});
 		});
 	</script>
 </body>
