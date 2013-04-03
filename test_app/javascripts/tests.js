@@ -52,7 +52,7 @@ test('returns radii correctly for cos', function() {
 module('wheelie without options set', {
 	setup: function() {
 		$( "#qunit-fixture" ).append('<div>A</div><div>B</div><div>C</div><div>D</div>');
-		$children = $('#qunit-fixture div')
+		$children = $('#qunit-fixture div');
 		$children.css('height', '2px');
 		$children.css('width', '2px');		
 		$wheeled = $children.wheelie({center_x: 10, center_y: 10, radius: 2});
@@ -182,4 +182,22 @@ test('still returns angles correctly', function() {
 	equal(angleFromIndex(2), - Math.PI, 'Angle of 3 is a radian');
 	equal(angleFromIndex(3), - 3 * Math.PI / 2, 'Angle of 3 is accurate');
 	equal(angleFromIndex(4), - 2 * Math.PI, 'Angle of 4 is 2*PI ');
+});
+
+module('wheelie can set a callback function', {
+	setup: function() {
+		$( "#qunit-fixture" ).append(four_divs);
+		$children = $('#qunit-fixture div');
+	}
+});
+
+asyncTest('that can edit a number at the end of the animation', function() {
+	window.test_value = 0;
+	equal(window.test_value, 0, 'test_value has not been changed')
+	$children.wheelie({center_x: 10, center_y: 10, radius: 2}, 
+		{ callback_function: function(){ window.test_value = 1;}});
+	setTimeout(function() {
+		equal(window.test_value, 1, 'test_value has been changed');
+		start();
+	}, waitTime);
 });
