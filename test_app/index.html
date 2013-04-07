@@ -3,21 +3,50 @@
 <head>
     <meta charset="utf-8">
     <title>Wheelie!</title>
+		<!-- Tests -->
 	  <link rel="stylesheet" href="stylesheets/qunit-1.11.0.css">
+		<!-- Twitter Bootstrap -->
 	  <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+		<!-- Prism Syntax Highlighter -->
+		<link rel="stylesheet" href="stylesheets/prism.css" />
 </head>
 <body>
 	<div class='container'>
 		<div class='row' id='header'>
 			<h1>Wheelie.js</h1>
-			<h4>A jQuery plugin to animate arrays into circles!</h4>
+			<h4>A jQuery plugin to animate element collections into circles!</h4>
 		</div>
-		<div class='row' id='first_example' style='position: relative; height:400px;'>
+		<div class='row' id='first_example' style='height:200px;'>
 			<h3>Example #1</h3>
 			<div>
-				<code>$('#barrel_roll span').wheelie({radius:150, center_x:250, center_y:250})</code>
-				<div id='barrel_roll' style='cursor:pointer;'>
+				<code class="language-javascript">$('#barrel_roll span').wheelie({radius:150, center_x:150, center_y:150})</code>
+				<div id='barrel_roll' style='position: relative; cursor:pointer;'>
 					<h4><span>Quickly!</span> <span>Do</span> <span>a</span> <span>barrel</span> <span>roll!</span></h4>
+				</div>
+			</div>
+		</div>
+		<div class='row' id='second_example' style='height:520px;'>
+			<h3>Example #2</h3>
+			<div>
+<pre>
+<code class="language-javascript">var $set = $('#transform_roller span');
+var callback = function(){
+	var center_x = $set.data('thinkLiamThink.wheelie').center_x;
+	var radians = $set.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
+	if ( center_x < 550 ) {
+		$set.wheelie({center_x: center_x + 10}, 
+			{callback_function: callback, radians_to_rotate_by: radians + Math.PI / 16, animation_easing: 'linear'});
+	}
+};
+$set.wheelie({radius:50, center_x:70, center_y:50}, 
+	{
+		radians_to_rotate_by: - Math.PI / 2,
+		callback_function: callback
+	});
+});</code>
+</pre>
+				<div id='transform_roller' style='position: relative; cursor:pointer;'>
+					<h4><span>Transform</span> <span>and</span> <span>roll</span> <span>out!</span></h4>
 				</div>
 			</div>
 		</div>
@@ -25,32 +54,33 @@
 	</div>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
+	<!-- jQuery and Wheelie Plugin -->
 	<script src="javascripts/jquery-1.9.1.min.js"></script>
 	<script src='../lib/wheelie.js'></script>
+	
+	<!-- Tests -->
   <script src="javascripts/qunit-1.11.0.js"></script>
   <script src="javascripts/tests.js"></script>
 
+	<!-- Prism Syntax Highlighter -->
+	<script src="javascripts/prism.js"></script>
+
 	<script>
 		$('#barrel_roll').click(function(){
-			$('#barrel_roll span').wheelie({radius:150, center_x:150, center_y:150}, {css_position: 'absolute'}) 
+			$('#barrel_roll span').wheelie({radius:50, center_x:50, center_y:50}) 
 		});
-		
-		$('a#just_a_thru_e').click(function(){
-			$('#list .subset').wheelie({radius:75, center_x:250, center_y:250}, 
-				{radians_to_rotate_by: - Math.PI / 2});
-		});
-		
-		$('a#dance').click(function(){
+				
+		$('#transform_roller span').click(function(){
+			var $set = $('#transform_roller span');
 			var callback = function(){
-				var $subset = $('#list .subset');
-				var center_x = $subset.data('thinkLiamThink.wheelie').center_x;
-				var radians = $subset.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
+				var center_x = $set.data('thinkLiamThink.wheelie').center_x;
+				var radians = $set.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
 				if ( center_x < 550 ) {
-					$subset.wheelie({center_x: center_x + 10, radius:50, center_y:150}, 
+					$set.wheelie({center_x: center_x + 10}, 
 						{callback_function: callback, radians_to_rotate_by: radians + Math.PI / 16, animation_easing: 'linear'});
 				}
 			};
-		  $('#list div.subset').wheelie({radius:50, center_x:250, center_y:150}, 
+		  $set.wheelie({radius:50, center_x:70, center_y:50}, 
 				{
 					radians_to_rotate_by: - Math.PI / 2,
 					callback_function: callback
