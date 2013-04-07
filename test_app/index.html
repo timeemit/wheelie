@@ -48,7 +48,7 @@
 				var radians = $subset.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
 				if ( center_x < 550 ) {
 					$subset.wheelie({center_x: center_x + 10, radius:50, center_y:150}, 
-						{callback_function: callback, radians_to_rotate_by: radians + Math.PI / 16});
+						{callback_function: callback, radians_to_rotate_by: radians + Math.PI / 16, animation_easing: 'linear'});
 				}
 			};
 		  $('#list div.subset').wheelie({radius:50, center_x:250, center_y:150}, 
