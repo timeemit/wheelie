@@ -42,12 +42,19 @@
 		});
 		
 		$('a#dance').click(function(){
-		  $('#list div.subset').wheelie({radius:250, center_x:250, center_y:250}, 
+			var callback = function(){
+				var $subset = $('#list div.subset');
+				var center_x = $subset.data('thinkLiamThink.wheelie').center_x;
+				var radians = $subset.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
+				if ( center_x < 550 ) {
+					$subset.wheelie({center_x: center_x + 10, radius:50, center_y:150}, 
+						{callback_function: callback, radians_to_rotate_by: radians + Math.PI / 16});
+				}
+			};
+		  $('#list div.subset').wheelie({radius:50, center_x:250, center_y:150}, 
 				{
 					radians_to_rotate_by: - Math.PI / 2,
-					callback_function: function() {
-						alert('complete');
-					}
+					callback_function: callback
 				});
 			});
 	</script>
