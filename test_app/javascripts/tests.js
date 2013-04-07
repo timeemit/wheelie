@@ -192,12 +192,28 @@ module('wheelie can set a callback function', {
 });
 
 asyncTest('that can edit a number at the end of the animation', function() {
-	window.test_value = 0;
-	equal(window.test_value, 0, 'test_value has not been changed')
-	$children.wheelie({center_x: 10, center_y: 10, radius: 2}, 
-		{ callback_function: function(){ window.test_value = 1;}});
+	window.test_value = [];
+	equal(window.test_value, [], 'test_value has not been changed')
+	$children.wheelie({center_x: 10, center_y: 10, radius: 2}, { 
+		callback_function: function(){ 
+			window.test_value.push(1);
+			$children.wheelie({center_x:10, center_y: 10, radius:2}, {
+				callback_function: function(){ 
+					window.test_value.push(2);
+				}
+			});
+		}
+	});
+	stop();
+
 	setTimeout(function() {
-		equal(window.test_value, 1, 'test_value has been changed');
+		equal(window.test_value, [1], 'test_value has been changed');
 		start();
 	}, waitTime);
+
+	setTimeout(function() {
+		equal(window.test_value, [1, 2], 'test_value has been changed a second time');
+		start();
+	}, waitTime * 2);
+	
 });

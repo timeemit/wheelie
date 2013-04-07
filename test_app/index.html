@@ -9,12 +9,12 @@
 	<a id='list_wheelie' href='#'>Do a wheelie!</a>
 	<a id='just_a_thru_e' href='#'>Now change it up!</a>
 	<a id='dance' href='#'>Now Dance!</a>
-	<div id='list' style='width:500px; height:500px;'>
+	<div id='list' style='width:300px; height:500px;'>
 		<div class='subset'>a</div>
 		<div class='subset'>b</div>
 		<div class='subset'>c</div>
 		<div class='subset'>d</div>
-		<div class='subset'>e</div>
+		<div>e</div>
 		<div>f</div>
 		<div>g</div>
 		<div>h</div>
@@ -42,14 +42,14 @@
 		});
 		
 		$('a#dance').click(function(){
-		  $('#list div').wheelie({radius:150, center_x:250 + 15, center_y:250}, 
+		  $('#list div.subset').wheelie({radius:250, center_x:250, center_y:250}, 
 				{
 					radians_to_rotate_by: - Math.PI / 2,
-					callback_function: function() {console.log(this); alert('hello completion');}
-				}
-			);
-		});
-		
+					callback_function: function() {
+						alert('complete');
+					}
+				});
+			});
 	</script>
 </body>
 </html>
