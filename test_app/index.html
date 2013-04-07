@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <title>Wheelie!</title>
 	  <link rel="stylesheet" href="stylesheets/qunit-1.11.0.css">
+	  <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
 </head>
 <body>
-	<a id='list_wheelie' href='#'>Do a wheelie!</a>
-	<a id='just_a_thru_e' href='#'>Now change it up!</a>
-	<a id='dance' href='#'>Now Dance!</a>
-	<div id='list' style='width:300px; height:500px;'>
-		<div class='subset'>a</div>
-		<div class='subset'>b</div>
-		<div class='subset'>c</div>
-		<div class='subset'>d</div>
-		<div>e</div>
-		<div>f</div>
-		<div>g</div>
-		<div>h</div>
-		<div>i</div>
-		<div>j</div>
-		<div>k</div>
-		<div>l</div>
+	<div class='container'>
+		<div class='row' id='header'>
+			<h1>Wheelie.js</h1>
+			<h4>A jQuery plugin to animate arrays into circles!</h4>
+		</div>
+		<div class='row' id='first_example' style='height:400px;'>
+			<h3>Example #1</h3>
+			<div>
+				<code>$('#barrel_roll span').wheelie({radius:150, center_x:250, center_y:250})</code>
+				<div id='barrel_roll' style='cursor:pointer;'>
+					<h4><span>Quickly!</span> <span>Do</span> <span>a</span> <span>barrel</span> <span>roll!</span></h4>
+				</div>
+			</div>
+		</div>
+
 	</div>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
@@ -31,19 +31,18 @@
   <script src="javascripts/tests.js"></script>
 
 	<script>
-		$('a#list_wheelie').click(function(){
-			$('#list div').wheelie({radius:150, center_x:250, center_y:250}, 
-				{radians_to_rotate_by: - Math.PI / 2});
+		$('#barrel_roll').click(function(){
+			$('#barrel_roll span').wheelie({radius:150, center_x:250, center_y:250}) 
 		});
 		
 		$('a#just_a_thru_e').click(function(){
-			$('#list div.subset').wheelie({radius:75, center_x:250, center_y:250}, 
+			$('#list .subset').wheelie({radius:75, center_x:250, center_y:250}, 
 				{radians_to_rotate_by: - Math.PI / 2});
 		});
 		
 		$('a#dance').click(function(){
 			var callback = function(){
-				var $subset = $('#list div.subset');
+				var $subset = $('#list .subset');
 				var center_x = $subset.data('thinkLiamThink.wheelie').center_x;
 				var radians = $subset.data('thinkLiamThink.wheelie').options.radians_to_rotate_by;
 				if ( center_x < 550 ) {

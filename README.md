@@ -12,7 +12,7 @@ The args object requires the following to be defined with numerical values (no u
 * `center_y`:  The y-coordinate of the circle's center.
     _Pro-tip_: Don't forget that the DOM's y-axis extends downwards!
 * `radius`: The distance from the circle's center that all the objects will rest at.
-**_Note:_** The jQuery collection position css attribute is set to absolute, so all of the coordinates are from the sides of the window.
+**_Note:_** The jQuery collection position css attribute is set to absolute by default, so all of the coordinates are from the sides of the window.
 
 The options object can have the following optionally set:
 
@@ -21,6 +21,13 @@ The options object can have the following optionally set:
 + `reverse_rotation`: Boolean (default is `false`).  
   Set to true for the standard unit circle layout.
   A positive `radians_to_rotate_by` argument will offset the circle in the counter-clockwise direction.
++ `animation_easing`: `'linear'` or `'swing'` (default is `'swing'`)
+	Easing function used by jQuery's animate function.
++ `callback_function`: Function (default is jQuery.noop)
+	A function to be called once the wheelie is complete.
++ `css_position`: `'absolute'` or `'relative'` (default is `'absolute'`)
+	By default, wheelie sets all objects to have position `absolute`.  `static` will disable the animation.
+
 
 ##Examples
 
