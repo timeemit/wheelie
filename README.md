@@ -21,11 +21,6 @@ The options object can have the following optionally set:
 + `reverse_rotation`: Boolean (default is `false`).  
   Set to true for the standard unit circle layout.
   A positive `radians_to_rotate_by` argument will offset the circle in the counter-clockwise direction.
-+ `invert_y_axis`: Boolean (default is `false`).  
-  Set to true for the standard unit circle layout.
-  A positive `radians_to_rotate_by` argument will offset the circle in the counter-clockwise direction.  **(Soon to be deprecated due to redundancy with reverse\_rotation).**
-
-**_Note:_** Setting both `invert_y_axis` and `reverse_rotation` to true will effectively create a default wheelie with a positive `radians_to_rotate_by` argument offsetting the circle in the clockwise direction.
 
 ##Examples
 
@@ -34,6 +29,7 @@ If you have `<div id='list'><div>A</div><div>B</div><div>C</div><div>D</div></di
     $('#id div).wheelie({center_x: 50, center_y: 100, radius: 25})
 
 Will make the list look like:
+
 ` `D
 C` `A
 ` `B
@@ -46,6 +42,7 @@ is 25 pixels from this center.
     {radians_to_rotate_by: - Math.PI / 2})
 
 Will create clock orientation, making the list look like:
+
 ` `A
 D` `B
 ` `C
@@ -58,6 +55,7 @@ is 10 pixels from this center.
     {reverse_rotation: true})
 
 Will make the list look like:
+
 ` `B
 C` `A
 ` `D
