@@ -117,35 +117,6 @@ asyncTest('sets position of fourth element centered around (x,y) = (10,8)', func
 	}, waitTime);
 });
 
-module('wheelie with invert_y_axis set to true', {
-	setup: function() {
-		$( "#qunit-fixture" ).append(four_divs);
-		$children = $('#qunit-fixture div').wheelie(
-			{center_x: 10, center_y: 10, radius: 2}, {invert_y_axis: true}
-		);
-	}
-});
-
-test('still returns angles correctly', function() {
-	var angleFromIndex = $children.data('thinkLiamThink.wheelie').angleFromIndex
-		
-	equal(angleFromIndex(0), 0, 'Angle of 1 is zero radians');
-	equal(angleFromIndex(1), Math.PI / 2, 'Angle of 2 is half a radian');
-	equal(angleFromIndex(2), Math.PI, 'Angle of 3 is a radian');
-	equal(angleFromIndex(3), 3 * Math.PI / 2, 'Angle of 3 is accurate');
-	equal(angleFromIndex(4), 2 * Math.PI, 'Angle of 4 is 2*PI ');
-});
-
-test('inverts radii with', function() {
-	var unitRadiusOfIndex = $children.data('thinkLiamThink.wheelie').unitRadiusOfIndex
-		
-	ok(Math.abs(unitRadiusOfIndex(0, 'sin')) < 0.000000000001, 'Sin of 0 radians is 0');
-	equal(unitRadiusOfIndex(1, 'sin'), -1, 'Sin of half of a radian is -1');
-	ok(Math.abs(unitRadiusOfIndex(2, 'sin')) < 0.000000000001, 'Sin of a radian is 0');
-	equal(unitRadiusOfIndex(3, 'sin'), 1, 'Sin of 1.5 radians is 1');
-	ok(Math.abs(unitRadiusOfIndex(4, 'sin')) < 0.000000000001, 'Sin of 2 radians is 0');
-});
-
 module('wheelie with radians_to_rotate_by set to pi / 4', {
 	setup: function() {
 		$( "#qunit-fixture" ).append(four_divs);
