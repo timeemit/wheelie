@@ -9,6 +9,9 @@
 	  <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
 		<!-- Prism Syntax Highlighter -->
 		<link rel="stylesheet" href="stylesheets/prism.css" />
+		<!-- Application -->
+		<link rel="stylesheet" href="stylesheets/app.css" />
+
 </head>
 <body>
 	<div class='container'>
@@ -16,15 +19,21 @@
 			<h1>Wheelie.js</h1>
 			<h4>A jQuery plugin to animate element collections into circles!</h4>
 		</div>
-		<div class='row' id='first_example' style='height:300px;'>
+		<div class='row' id='first_example'>
 			<h3>The Basic Wheelie</h3>
 			<div class='span5'>
 				<div>
 <pre><code class="language-javascript">$('#barrel_roll span').wheelie(
 	{radius:150, center_x:150, center_y:150}
 );</code></pre>
-					<div id='barrel_roll' style='position: relative; cursor:pointer;'>
-						<h4><a><span>Click</span> <span>quickly</span> <span>to</span> <span>do</span> <span>a</span> <span>barrel</span> <span>roll!</span></a></h4>
+					<div id='barrel_roll'>
+						<h4>
+						<a>Click!  </a>
+						<a>Do </a>
+						<a>a </a>
+						<a>barrel </a>
+						<a>roll!</a>
+						</h4>
 					</div>
 				</div>
 			</div>
@@ -36,7 +45,7 @@
 	{radians_to_rotate_by: Math.PI / 6 + -Math.PI / 2}
 ); 
 </code></pre>
-					<div id='clockify' style='position: relative; cursor:pointer;'>
+					<div id='clockify'>
 						<h4><a>
 							<span>1</span>
 							<span>2</span>
@@ -55,41 +64,48 @@
 				</div>
 			</div>
 		</div>
-		<div class='row' id='second_example' style='height:500px;'>
-			<h3>Manage Multiple Wheels</h3>
-			
-<pre><code class="language-javascript">$('#collection div, #wild div').click(function(){
-$this = $(this);
-if ($this.parent().attr('id') == 'collection') {
-	$this.detach();
-	$('#wild').append($this).children('div').wheelie();
-} else if ($this.parent().attr('id') == 'wild') {
-	$this.detach();
-	$('#collection').append($this).children('div').wheelie();
-}
-});</code></pre>
-			
-			<div id='collection' class='span6' style='position: relative;'>
-				<h4>Collection</h4>
-				<div>Pidgeotto</div>
-				<div>Articuno</div>
-				<div>Nidoqueen</div>
-				<div>Raticate</div>
-				<div>Pikachu</div>
-				<div>Zubat</div>
+		<div class='row' id='second_example'>
+			<h3>Works With Multiple Wheels!</h3>			
+			<div class='span5'>
+				<pre><code class="language-javascript">$('#collection a').wheelie({radius:50, center_x:100, center_y:100});
+				$('#wild a').wheelie({radius:50, center_x:100, center_y:100});</code></pre>
 			</div>
-			<div id='wild' class='span6' style='position: relative;'>
-				<h4>Wild</h4>
-				<div>Snorlax</div>
-				<div>Koffing</div>
-				<div>Growlithe</div>
-				<div>Voltorb</div>
-				<div>Abra</div>
-			</div>			
+			
+			<div class='span5 offset1'>
+				<pre><code class="language-javascript">$('#collection div, #wild div').click(function(){
+				$this = $(this);
+				if ($this.parent().attr('id') == 'collection') {
+					$this.detach();
+					$('#wild').append($this).children('div').wheelie();
+				} else if ($this.parent().attr('id') == 'wild') {
+					$this.detach();
+					$('#collection').append($this).children('div').wheelie();
+				}
+				});</code></pre>
+			</div>
 		</div>
 
-		<div class='row' id='third_example' style='height:520px;'>
-			<h3></h3>
+		<div id='second_example_code' class='row'>
+			<div id='collection' class='span5'>
+				<h4>Collection</h4>
+				<a>Pidgeotto</a>
+				<a>Articuno</a>
+				<a>Nidoqueen</a>
+				<a>Raticate</a>
+				<a>Pikachu</a>
+				<a>Zubat</a>
+			</div>
+			<div id='wild' class='span5 offset1'>				
+				<h4>Wild</h4>
+				<a>Snorlax</a>
+				<a>Koffing</a>
+				<a>Growlithe</a>
+				<a>Voltorb</a>
+				<a>Abra</a>
+			</div>			
+		</div>
+		<div class='row' id='third_example'>
+			<h3>Use Callback Functions For Unlimited Potential!</h3>
 			<div>
 <pre><code class="language-javascript">var $set = $('#transform_roller span');
 var callback = function(){
@@ -118,11 +134,11 @@ $set.wheelie({radius:50, center_x:70, center_y:50},
 		</div>
 
 	</div>
-  <div id="qunit"></div>
   <div id="qunit-fixture"></div>
+  <div id="qunit"></div>
 	<!-- jQuery and Wheelie Plugin -->
 	<script src="javascripts/jquery-1.9.1.min.js"></script>
-	<script src='../lib/wheelie.js'></script>
+	<script src='../wheelie.js'></script>
 	
 	<!-- Tests -->
   <script src="javascripts/qunit-1.11.0.js"></script>
@@ -131,6 +147,7 @@ $set.wheelie({radius:50, center_x:70, center_y:50},
 	<!-- Prism Syntax Highlighter -->
 	<script src="javascripts/prism.js"></script>
 
+	<!-- Application -->
 	<script src="javascripts/app.js"></script>
 </body>
 </html>

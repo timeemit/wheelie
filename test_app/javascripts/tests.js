@@ -157,14 +157,13 @@ test('still returns angles correctly', function() {
 
 module('wheelie can set a callback function', {
 	setup: function() {
-		$( "#qunit-fixture" ).append(four_divs);
-		$qunit = $('#qunit-fixture')
-		$children = $('#qunit-fixture div');
-		equal($qunit.children().length, 4, 'test_value has not been changed')
+		var $qunit = $('#qunit-fixture').append(four_divs);
+		var $children = $('#qunit-fixture div');
+		equal($children.length, 4, 'test_value has not been changed')
 		$children.wheelie({center_x: 10, center_y: 10, radius: 2}, { 
 			callback_function: function(){ 
 				$('#qunit-fixture').append('<div>E</div>');
-				$children.wheelie({}, {
+				$('#qunit-fixture div').wheelie({}, {
 					callback_function: function(){ 
 						$('#qunit-fixture').append('<div>F</div>');
 					}

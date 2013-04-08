@@ -1,23 +1,23 @@
 $(document).ready(function(){
-	$('#collection div').wheelie({radius:50, center_x:100, center_y:100});
-	$('#wild div').wheelie({radius:50, center_x:100, center_y:100});
+	$('#collection a').wheelie({radius:50, center_x:100, center_y:100});
+	$('#wild a').wheelie({radius:50, center_x:100, center_y:100});
 
 	$('#barrel_roll').click(function(){
-		$('#barrel_roll span').wheelie({radius:50, center_x:70, center_y:50}) 
+		$('#barrel_roll a').wheelie({radius:50, center_x:70, center_y:50}) 
 	});
 		
 	$('#clockify').click(function(){
 		$('#clockify span').wheelie({radius:50, center_x:70, center_y:50}, {radians_to_rotate_by: Math.PI / 6 + -Math.PI / 2}) 
 	});
 
-	$('#wild div, #collection div').click(function(){
+	$('#wild a, #collection a').click(function(){
 		$this = $(this);
 		if ($this.parent().attr('id') == 'collection') {
 			$this.detach();
-			$('#wild').append($this).children('div').wheelie();
+			$('#wild').append($this).children('a').wheelie();
 		} else if ($this.parent().attr('id') == 'wild') {
 			$this.detach();
-			$('#collection').append($this).children('div').wheelie();
+			$('#collection').append($this).children('a').wheelie();
 		}
 	});
 	
