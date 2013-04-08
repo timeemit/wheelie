@@ -1,9 +1,11 @@
 #Do a Wheelie!
+
 Wheelie is a jQuery plugin that revolves a collection of jQuery objects around a given point with a specified radius.
 
-Developed with jQuery 1.9.1 and tested QUnit 1.11.0
+Developed with jQuery 1.9.1 and tested with QUnit 1.11.0
 
 ##How to work it
+
     $(selector).wheelie(args, options);
 
 The args object requires the following to be defined with numerical values (no units necessary):
@@ -27,6 +29,20 @@ The options object can have the following optionally set:
 + `callback_function`: Function (default is jQuery.noop)
 	A function to be called once the wheelie is complete.
 
+##Accessing Data
+
+The wheelie plugin operates under the `thinkLiamThink.wheelie` namespace.  
+If you need to access, say, the radius element for a set of elements that have already been wheelied
+for your super awesome callback function then just access it with the jQuery.data() function like so:
+
+    $elements.data( "thinkLiamThink.wheelie").radius // Access the radius
+    $elements.data( "thinkLiamThink.wheelie").center_x // Access the center_x
+    $elements.data( "thinkLiamThink.wheelie").center_y // Access the center_y 
+
+One slight gotcha is that anything specified in the options hash are tucked into the options object:
+
+    $elements.data( "thinkLiamThink.wheelie").options.radians_to_rotate_by // Access the radian offset
+    $elements.data( "thinkLiamThink.wheelie").options.callback_function // Access the callback function
 
 ##Examples
 
