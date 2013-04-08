@@ -1,5 +1,5 @@
 set :application, "wheelie.js"
-set :repository,  "git@github.com:timeemit/DesignersCircus.git"
+set :repository,  "git@github.com:timeemit/wheelie.git"
 set :ip_address, "50.57.115.223"
 set :deploy_to, "/home/oricksum/public_html/#{application}"
 set :user, "oricksum"
