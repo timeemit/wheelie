@@ -163,7 +163,7 @@ module('wheelie can set a callback function', {
 		equal($qunit.children().length, 4, 'test_value has not been changed')
 		$children.wheelie({center_x: 10, center_y: 10, radius: 2}, { 
 			callback_function: function(){ 
-				$qunit.append('<div>E</div>');
+				$('#qunit-fixture').append('<div>E</div>');
 				$children.wheelie({}, {
 					callback_function: function(){ 
 						$('#qunit-fixture').append('<div>F</div>');
