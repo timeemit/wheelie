@@ -158,32 +158,33 @@ test('still returns angles correctly', function() {
 module('wheelie can set a callback function', {
 	setup: function() {
 		$( "#qunit-fixture" ).append(four_divs);
+		$qunit = $('#qunit-fixture')
 		$children = $('#qunit-fixture div');
+		equal($qunit.children().length, 4, 'test_value has not been changed')
+		$children.wheelie({center_x: 10, center_y: 10, radius: 2}, { 
+			callback_function: function(){ 
+				$qunit.append('<div>E</div>');
+				$children.wheelie({}, {
+					callback_function: function(){ 
+						$('#qunit-fixture').append('<div>F</div>');
+					}
+				});
+			}
+		});
 	}
 });
 
 asyncTest('that can edit a number at the end of the animation', function() {
-	window.test_value = [];
-	equal(window.test_value, [], 'test_value has not been changed')
-	$children.wheelie({center_x: 10, center_y: 10, radius: 2}, { 
-		callback_function: function(){ 
-			window.test_value.push(1);
-			$children.wheelie({center_x:10, center_y: 10, radius:2}, {
-				callback_function: function(){ 
-					window.test_value.push(2);
-				}
-			});
-		}
-	});
-	stop();
-
 	setTimeout(function() {
-		equal(window.test_value, [1], 'test_value has been changed');
+		equal($('#qunit-fixture div').length, 5, 'test_value has been changed');
 		start();
 	}, waitTime);
+	
+});
 
+asyncTest('that can edit a number at the end of a nested animation', function() {
 	setTimeout(function() {
-		equal(window.test_value, [1, 2], 'test_value has been changed a second time');
+		equal($('#qunit-fixture div').length, 6, 'test_value has been changed a second time');
 		start();
 	}, waitTime * 2);
 	
