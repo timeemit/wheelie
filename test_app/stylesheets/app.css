@@ -4,6 +4,11 @@ h1 {
 body {
   background-color: black; }
 
+p.github {
+  font-size: 18px;
+  float: right;
+  color: DarkBlue; }
+
 #header {
   background-color: orange; }
   #header h1 {
@@ -14,10 +19,15 @@ body {
     background-color: yellow; }
 
 #first_example {
+  background-color: DarkRed; }
+
+#first_example_code {
   background-color: DarkRed;
-  height: 300px; }
-  #first_example #barrel_roll, #first_example #clockify {
+  height: 150px; }
+  #first_example_code #barrel_roll, #first_example_code #clockify {
     position: relative; }
+  #first_example_code a {
+    color: LightBlue; }
 
 #second_example {
   background-color: LightBlue; }
@@ -29,7 +39,7 @@ body {
     position: relative; }
 
 #third_example {
-  background-color: LightGreen;
+  background-color: SandyBrown;
   height: 520px; }
   #third_example #transform_roller {
     position: relative; }

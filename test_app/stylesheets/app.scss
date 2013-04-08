@@ -1,6 +1,14 @@
 h1 { font-size: 62px; }
-
 body { background-color: black; }
+
+@mixin first_example_background { background-color: DarkRed; }
+@mixin second_example_background { background-color: LightBlue; }
+
+p.github { 
+	font-size: 18px;
+	float:right;
+	color: DarkBlue;
+}
 
 #header { 
 	background-color:orange; 
@@ -12,13 +20,14 @@ body { background-color: black; }
 	}
 }
 
-#first_example { 
-	background-color: DarkRed;
-	height:300px; 
-	#barrel_roll, #clockify { position: relative; }
-}
+#first_example { @include first_example_background; }
 
-@mixin second_example_background { background-color: LightBlue; }
+#first_example_code { 
+	@include first_example_background;
+	height: 150px;
+	#barrel_roll, #clockify { position: relative; }
+	a { color: LightBlue; }	
+}
 
 #second_example { @include second_example_background; }
 
@@ -29,7 +38,7 @@ body { background-color: black; }
 }
 
 #third_example { 
-	background-color: LightGreen;
+	background-color: SandyBrown;
 	height:520px;
 	#transform_roller { position: relative; }
 }

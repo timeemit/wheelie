@@ -16,55 +16,56 @@
 <body>
 	<div class='container'>
 		<div class='row' id='header'>
+			<p class='github'><a href='http://github.com/timeemit/wheelie'>Check it out Github!</a></p>
 			<h1>Wheelie.js</h1>
 			<h4>A jQuery plugin to animate element collections into circles!</h4>
 		</div>
 		<div class='row' id='first_example'>
+			<p class='github'><a href='http://github.com/timeemit/wheelie'>Check it out Github!</a></p>
 			<h3>The Basic Wheelie</h3>
 			<div class='span5'>
-				<div>
 <pre><code class="language-javascript">$('#barrel_roll span').wheelie(
-	{radius:150, center_x:150, center_y:150}
+	{radius:50, center_x:120, center_y:50}
 );</code></pre>
-					<div id='barrel_roll'>
-						<h4>
-						<a>Click!  </a>
-						<a>Do </a>
-						<a>a </a>
-						<a>barrel </a>
-						<a>roll!</a>
-						</h4>
-					</div>
-				</div>
 			</div>
 			<div class='span6 offset1'>
-				<h3></h3>
-				<div>
 <pre><code class="language-javascript">$('#clockify span').wheelie(
-	{radius:50, center_x:70, center_y:50}, 
-	{radians_to_rotate_by: Math.PI / 6 + -Math.PI / 2}
+	{radius:50, center_x:70, center_y:60}, 
+	{radians_to_rotate_by: Math.PI / 6 - Math.PI / 2}
 ); 
 </code></pre>
-					<div id='clockify'>
-						<h4><a>
-							<span>1</span>
-							<span>2</span>
-							<span>3</span>
-							<span>4</span>
-							<span>5</span>
-							<span>6</span>
-							<span>7</span>
-							<span>8</span>
-							<span>9</span>
-							<span>10</span>
-							<span>11</span>
-							<span>12</span>
-							</a></h4>
-					</div>
-				</div>
 			</div>
 		</div>
+		<div id='first_example_code' class='row'>
+			<div id='barrel_roll' class='span5'>
+				<h4>
+				<a>Click!  </a>
+				<a>Do </a>
+				<a>a </a>
+				<a>barrel </a>
+				<a>roll!</a>
+				</h4>
+			</div>
+			<div id='clockify' class='span6 offset1'>
+				<h4><a>
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+					<span>6</span>
+					<span>7</span>
+					<span>8</span>
+					<span>9</span>
+					<span>10</span>
+					<span>11</span>
+					<span>12</span>
+					</a></h4>
+			</div>
+					
+		</div>
 		<div class='row' id='second_example'>
+			<p class='github'><a href='http://github.com/timeemit/wheelie'>Check it out Github!</a></p>
 			<h3>Works With Multiple Wheels!</h3>			
 			<div class='span5'>
 <pre><code class="language-javascript">$('#collection a').wheelie({
@@ -94,7 +95,7 @@ $('#wild a').wheelie({
 
 		<div id='second_example_code' class='row'>
 			<div id='collection' class='span5'>
-				<h4>Collection</h4>
+				<h4>Collection (Click to release!)</h4>
 				<a>Pidgeotto</a>
 				<a>Articuno</a>
 				<a>Nidoqueen</a>
@@ -103,7 +104,7 @@ $('#wild a').wheelie({
 				<a>Zubat</a>
 			</div>
 			<div id='wild' class='span6 offset1'>				
-				<h4>Wild</h4>
+				<h4>Wild (Click to collect!)</h4>
 				<a>Snorlax</a>
 				<a>Koffing</a>
 				<a>Growlithe</a>
@@ -112,6 +113,7 @@ $('#wild a').wheelie({
 			</div>			
 		</div>
 		<div class='row' id='third_example'>
+			<p class='github'><a href='http://github.com/timeemit/wheelie'>Check it out Github!</a></p>
 			<h3>Use Callback Functions For Unlimited Potential!</h3>
 			<div>
 <pre><code class="language-javascript">var $set = $('#transform_roller span');
