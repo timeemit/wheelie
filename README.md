@@ -15,7 +15,10 @@ The args object requires the following to be defined with numerical values (no u
     _Pro-tip_: Don't forget that the DOM's y-axis extends downwards!
 * `radius`: The distance from the circle's center that all the objects will rest at.
 **_Note:_** The jQuery collection position css attribute is set to absolute, 
-	so all of the coordinates are from the first parent element that has a position other than static.
+	so the coordinates are relative to the first parent element that has a position other than static.
+
+The args object must only be completely defined the first time an object is called on a set of elements.
+Subsequent calls to the same set of elements may pass only parameters that have changed if so desired.
 
 The options object can have the following optionally set:
 
@@ -28,6 +31,8 @@ The options object can have the following optionally set:
 	Easing function used by jQuery's animate function.
 + `callback_function`: Function (default is jQuery.noop)
 	A function to be called once the wheelie is complete.
+
+Of course, wheelie returns the set of matched elements.
 
 ##Accessing Data
 

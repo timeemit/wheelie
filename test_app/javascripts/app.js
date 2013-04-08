@@ -10,16 +10,18 @@ $(document).ready(function(){
 		$('#clockify span').wheelie({radius:50, center_x:70, center_y:50}, {radians_to_rotate_by: Math.PI / 6 + -Math.PI / 2}) 
 	});
 
-	$('#wild a, #collection a').click(function(){
-		$this = $(this);
+	$('#collection a, #wild a').click(function(){
+		var $this = $(this);
+		var selector = '';
 		if ($this.parent().attr('id') == 'collection') {
-			$this.detach();
-			$('#wild').append($this).children('a').wheelie();
-		} else if ($this.parent().attr('id') == 'wild') {
-			$this.detach();
-			$('#collection').append($this).children('a').wheelie();
+			selector = '#wild';
 		}
-	});
+		else if ($this.parent().attr('id') == 'wild') {
+			selector = '#collection';
+		}
+		$this.detach();
+		$(selector).append($this).children('a').wheelie();
+	});	
 	
 	$('#transform_roller a').click(function(){
 		var $set = $('#transform_roller a');

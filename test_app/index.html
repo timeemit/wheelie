@@ -37,7 +37,7 @@
 					</div>
 				</div>
 			</div>
-			<div class='span5 offset1'>
+			<div class='span6 offset1'>
 				<h3></h3>
 				<div>
 <pre><code class="language-javascript">$('#clockify span').wheelie(
@@ -67,21 +67,28 @@
 		<div class='row' id='second_example'>
 			<h3>Works With Multiple Wheels!</h3>			
 			<div class='span5'>
-				<pre><code class="language-javascript">$('#collection a').wheelie({radius:50, center_x:100, center_y:100});
-				$('#wild a').wheelie({radius:50, center_x:100, center_y:100});</code></pre>
+<pre><code class="language-javascript">$('#collection a').wheelie({
+	radius:50, center_x:100, center_y:100
+});
+$('#wild a').wheelie({
+	radius:50, center_x:100, center_y:100
+});</code></pre>
 			</div>
 			
-			<div class='span5 offset1'>
-				<pre><code class="language-javascript">$('#collection div, #wild div').click(function(){
-				$this = $(this);
-				if ($this.parent().attr('id') == 'collection') {
-					$this.detach();
-					$('#wild').append($this).children('div').wheelie();
-				} else if ($this.parent().attr('id') == 'wild') {
-					$this.detach();
-					$('#collection').append($this).children('div').wheelie();
-				}
-				});</code></pre>
+			<div class='span6 offset1'>
+<pre><code class="language-javascript">$('#collection a, #wild a').click(function(){
+	var $this = $(this);
+	var selector = '';
+	if ($this.parent().attr('id') == 'collection') {
+		selector = '#wild';
+	}
+	else if ($this.parent().attr('id') == 'wild') {
+		selector = '#collection';
+	}
+	$this.detach();
+	// Note how the second wheelie doesn't need arguments!
+	$(selector).append($this).children('a').wheelie();
+});</code></pre>
 			</div>
 		</div>
 
@@ -95,7 +102,7 @@
 				<a>Pikachu</a>
 				<a>Zubat</a>
 			</div>
-			<div id='wild' class='span5 offset1'>				
+			<div id='wild' class='span6 offset1'>				
 				<h4>Wild</h4>
 				<a>Snorlax</a>
 				<a>Koffing</a>

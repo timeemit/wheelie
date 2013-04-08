@@ -1,12 +1,35 @@
-h1 { font-size: 62px; }
+h1 {
+  font-size: 62px; }
 
-#header { background-color: orange; }
+body {
+  background-color: black; }
 
-#first_example { height:300px; }
-#barrel_roll, #clockify { position: relative; }
+#header {
+  background-color: orange; }
+  #header h1 {
+    padding: 10px; }
+  #header h4 {
+    padding: 0px 20px;
+    font-style: italic;
+    background-color: yellow; }
 
-#second_example_code { height:200px; }
-#collection, #wild { position: relative; }
+#first_example {
+  background-color: DarkRed;
+  height: 300px; }
+  #first_example #barrel_roll, #first_example #clockify {
+    position: relative; }
 
-#third_example { height:520px;}
-#transform_roller { position: relative; }
+#second_example {
+  background-color: LightBlue; }
+
+#second_example_code {
+  background-color: LightBlue;
+  height: 200px; }
+  #second_example_code #collection, #second_example_code #wild {
+    position: relative; }
+
+#third_example {
+  background-color: LightGreen;
+  height: 520px; }
+  #third_example #transform_roller {
+    position: relative; }
