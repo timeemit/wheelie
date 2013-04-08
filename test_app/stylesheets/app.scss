@@ -3,11 +3,26 @@ body { background-color: black; }
 
 @mixin first_example_background { background-color: DarkRed; }
 @mixin second_example_background { background-color: LightBlue; }
+@mixin rotate($angle) {
+	transform:rotate($angle);
+	-ms-transform:rotate($angle); /* IE 9 */
+	-moz-transform:rotate($angle); /* Firefox */
+	-webkit-transform:rotate($angle); /* Safari and Chrome */
+	-o-transform:rotate($angle); /* Opera */
+}
+
 
 p.github { 
+	@include rotate(45deg);
 	font-size: 18px;
-	float:right;
-	color: DarkBlue;
+	float: right;
+	color: white;
+	position: relative;
+	top: 45px;
+	left: 10px;
+	background-color:black;
+	padding: 3px;
+	border-radius: 0px 0px 15px 15px;
 }
 
 #header { 
